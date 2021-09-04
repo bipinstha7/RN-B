@@ -2,15 +2,15 @@ import hpp from 'hpp';
 import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import 'express-async-errors';
+import 'express-async-errors'; // don't need to wrap async/await inside try/catch block
 import compression from 'compression';
 import { connect, set } from 'mongoose';
 import express, { Router } from 'express';
 import mongoSanitize from 'express-mongo-sanitize';
 
-import config from '@config';
-import logger from '@utils/logger';
-import errorMiddleware from '@middlewares/error.middleware';
+import config from '@shared/config';
+import logger from '@shared/utils/logger';
+import errorMiddleware from '@shared/middlewares/error.middleware';
 
 class App {
   public app: express.Application;

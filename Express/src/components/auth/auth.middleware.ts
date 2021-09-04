@@ -2,9 +2,9 @@
 import { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
-import { IDataStoredInToken, IRequestWithUser } from '@interfaces/auth.interface';
-import User from '@/models/user.model';
-import ApiError from '@/utils/ApiError';
+import { IDataStoredInToken, IRequestWithUser } from '@components/auth/auth.interface';
+import User from '@components/user/user.model';
+import ApiError from '@shared/utils/ApiError';
 
 const authMiddleware = async (req: IRequestWithUser, res: Response, next: NextFunction) => {
   try {

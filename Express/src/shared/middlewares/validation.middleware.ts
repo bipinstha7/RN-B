@@ -1,7 +1,7 @@
 import Joi from 'joi';
 
-import pick from '@utils/pick';
-import ApiError from '@utils/ApiError';
+import pick from '@shared/utils/pick';
+import ApiError from '@shared/utils/ApiError';
 
 const validate = schema => (req, res, next) => {
   const validSchema = pick(schema, ['params', 'query', 'body']);

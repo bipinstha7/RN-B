@@ -1,6 +1,6 @@
 import App from '@/app';
-import logger from '@utils/logger';
-import Routes from '@routes';
+import logger from '@shared/utils/logger';
+import Routes from '@shared/routes';
 
 const app = new App(Routes);
 app.listen();

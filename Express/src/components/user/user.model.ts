@@ -1,7 +1,7 @@
 import validator from 'validator';
 import { model, Schema, Document } from 'mongoose';
 
-import { IUserModal } from '@interfaces/users.interface';
+import { IUserModal } from '@components/user/users.interface';
 
 const userSchema: Schema = new Schema(
   {

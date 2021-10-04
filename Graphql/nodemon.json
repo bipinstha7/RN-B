@@ -1,0 +1,7 @@
+{
+  "watch": ["src", ".env"],
+  "ext": "js,ts,json",
+  "ignore": ["src/**/*.spec.ts", "src/**/*.test.ts"],
+  "faster_exec__remove_all_but_doesnot_throw_error_and_to_use_it_replace_with_just_exec": "ts-node -r tsconfig-paths/register --transpile-only src/server.ts",
+  "exec": "ts-node -r tsconfig-paths/register  src/server.ts"
+}

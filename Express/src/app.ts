@@ -44,7 +44,7 @@ export default class App {
       set('debug', true);
     }
 
-    connect(config.mongoose.url, config.mongoose.options)
+    connect(config.mongoose.url)
       .then(() => {
         logger.info('====🏃 Connected to MongoDB ====');
       })
@@ -59,7 +59,14 @@ export default class App {
     this.app.use(helmet());
     this.app.use(compression());
     this.app.use(express.json());
-    this.app.use(mongoSanitize());
+    this.app.use(
+      mongoSanitize({
+        replaceWith: 'Invalid_Sign_',
+        onSanitize: ({ key }) => {
+          logger.warn(`This request[${key}] is sanitized as it contains injective sign ($ or .)`);
+        },
+      }),
+    );
   }
 
   private initializeRoutes(routes: Router[]) {

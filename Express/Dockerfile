@@ -1,23 +1,29 @@
 # Common build stage
-FROM node:14.14.0-alpine3.12 as common-build-stage
-
-COPY . ./app
+FROM node:14.17.6-alpine3.11 as rn-server-build
 
 WORKDIR /app
+COPY package.json .
+#RUN npm install
 
-RUN npm install
+ARG NODE_ENV
+RUN if [ "$NODE_ENV" = "development" ];\
+  then npm install;\
+  else npm install --only=production; \
+  fi
 
-EXPOSE 3000
+COPY . .
+
+# CHECK IF DOCKER IGNORE IS ACTUALLY IGNORED
 
 # Development build stage
-FROM common-build-stage as development-build-stage
+FROM rn-server-build as rn-development-build-stage
 
 ENV NODE_ENV development
 
 CMD ["npm", "run", "dev"]
 
 # Production build stage
-FROM common-build-stage as production-build-stage
+FROM rn-server-build as rn-production-build-stage
 
 ENV NODE_ENV production
 

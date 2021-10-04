@@ -12,7 +12,7 @@ import config from '@shared/config';
 import logger from '@shared/utils/logger';
 import errorMiddleware from '@shared/middlewares/error.middleware';
 
-class App {
+export default class App {
   public app: express.Application;
   public port: string | number;
   public env: string;
@@ -22,7 +22,7 @@ class App {
     this.port = process.env.PORT || 3000;
     this.env = process.env.NODE_ENV || 'development';
 
-    // this.connectToDatabase();
+    this.connectToDatabase();
     this.initializeMiddlewares();
     this.initializeRoutes(routes);
     this.initializeErrorHandling();
@@ -44,10 +44,11 @@ class App {
       set('debug', true);
     }
 
-    connect(config.mongoose.url, config.mongoose.options).then(() => {
-      logger.info('🏃 Connected to MongoDB');
-      logger.info(`=================================`);
-    });
+    connect(config.mongoose.url, config.mongoose.options)
+      .then(() => {
+        logger.info('====🏃 Connected to MongoDB ====');
+      })
+      .catch(err => console.log({ MongoConnectionError: err }));
   }
 
   private initializeMiddlewares() {
@@ -75,5 +76,3 @@ class App {
     this.app.use(errorMiddleware);
   }
 }
-
-export default App;

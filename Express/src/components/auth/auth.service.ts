@@ -4,10 +4,12 @@ import User from '@components/user/user.model';
 import ApiError from '@shared/utils/ApiError';
 import { IUser, IUserModal } from '@components/user/users.interface';
 import { IDataStoredInToken, ITokenData, IUserBody } from './auth.interface';
+// import RenameText from '@components/user/bipintest.model';
 
 export default {
   async signup(userData: IUserBody): Promise<IUser> {
     const user: IUser = await User.findOne({ email: userData.email });
+    // const b = await RenameText.create({});
     if (user) throw new ApiError(409, `Your email ${userData.email} already exists`);
 
     const hashedPassword = await bcrypt.hash(userData.password, 10);

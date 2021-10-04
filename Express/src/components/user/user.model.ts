@@ -7,7 +7,7 @@ const userSchema: Schema = new Schema(
   {
     email: {
       type: String,
-      required: true,
+      required: [true, 'Email is required'],
       unique: true,
       trim: true,
       lowercase: true,
@@ -19,7 +19,7 @@ const userSchema: Schema = new Schema(
     },
     password: {
       type: String,
-      required: true,
+      required: [true, 'Password is required'],
       minlength: 8,
       validate(value) {
         if (!value.match(/\d/) || !value.match(/[a-zA-Z]/)) {
@@ -28,6 +28,7 @@ const userSchema: Schema = new Schema(
       },
     },
   },
+  // USE SNAKE CASE METHOD
   {
     timestamps: true,
   },

@@ -5,6 +5,8 @@ import App from '@/app';
 import { CreateUserDto } from '@dtos/users.dto';
 import AuthRoute from '@routes/auth.route';
 
+/* USE EITHER nock OR msw */
+
 afterAll(async () => {
   await new Promise<void>(resolve => setTimeout(() => resolve(), 500));
 });

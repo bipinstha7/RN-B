@@ -70,7 +70,7 @@ export default class App {
   }
 
   private initializeRoutes(routes: Router[]) {
-    this.app.use('/', (_, res) => {
+    this.app.get('/', (_, res) => {
       res.send('All is well!');
     });
 

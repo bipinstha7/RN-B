@@ -23,8 +23,8 @@ services:
 
     # Remove volumes in prod because it doesn't respect .dockerignore
     volumes:
-      - ./:/app
       - /app/node_modules
+      - ./Express:/app
     # restart: 'unless-stopped'
     restart: "always"
     networks:
@@ -41,8 +41,8 @@ services:
 
   #   # Remove volumes in prod because it doesn't respect .dockerignore
   #   volumes:
-  #     - ./:/app
   #     - /app/node_modules
+  # - ./Graphql:/app
   #   # restart: 'unless-stopped'
   #   restart: "always"
   #   networks:
@@ -52,3 +52,14 @@ networks:
     driver: bridge
 # docker-compose down -v
 # keep docker and nginx files in main backend folder and proxy pass to express and graphql. And it seems like the load balancing, microservice and multi container
+
+# 1. docker-compose up => just starts the container/create and starts if new
+# 2. docker-compose build => starts container with file changes read => use this when file changes
+# 3. docker container prune => removes all stopped containers
+# 4. docker exec -it NAME_OF_THE_CONTAINER bash => opens the interactive bash
+# 5. docker run -it NAME_OF_THE_IMAGE => run the respective image
+
+#==========================
+# UPDATE PACKAGE FREQUENTLY
+# USE NODE VERSION 14
+#==========================

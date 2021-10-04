@@ -88,16 +88,3 @@ export default class App {
     logger.info(`🚀 Graphql server ready at http://localhost:${this.port}${this.server.graphqlPath}`);
   }
 }
-
-// }
-
-// TRY THIS i.e if two query is possible and returns the data
-// query GetBooksAndAuthors {
-//   books {
-//     title
-//   }
-
-//   authors {
-//     name
-//   }
-// }

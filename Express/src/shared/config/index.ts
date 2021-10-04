@@ -36,11 +36,12 @@ export default {
   logFormat: envVars.LOG_FORMAT,
   mongoose: {
     url: envVars.MONGODB_URL + (envVars.NODE_ENV === 'test' ? '-test' : ''),
-    options: {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    },
+    /* mongoose 6 doesn't need these values */
+    // options: {
+    //   useCreateIndex: true,
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    // },
   },
   jwt: {
     secret: envVars.JWT_SECRET,

@@ -13,7 +13,7 @@ node_modules_backup
 .lintstagedrc.json
 .prettierignore
 .prettierrc
-.env
+# .env // WHEN DEV IS COMPLETED, THEN UNCOMMENT THIS .env
 
 # test
 jest.config.js

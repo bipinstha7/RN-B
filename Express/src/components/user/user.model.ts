@@ -5,12 +5,17 @@ import { IUserModal } from '@components/user/users.interface';
 
 const userSchema: Schema = new Schema(
   {
+    name: {
+      type: String,
+      trim: true,
+      required: [true, 'Name is required'],
+    },
     email: {
       type: String,
-      required: [true, 'Email is required'],
-      unique: true,
       trim: true,
+      unique: true,
       lowercase: true,
+      required: [true, 'Email is required'],
       validate(value) {
         if (!validator.isEmail(value)) {
           throw new Error('Invalid email');
@@ -19,13 +24,9 @@ const userSchema: Schema = new Schema(
     },
     password: {
       type: String,
+      trim: true,
       required: [true, 'Password is required'],
-      minlength: 8,
-      validate(value) {
-        if (!value.match(/\d/) || !value.match(/[a-zA-Z]/)) {
-          throw new Error('Password must contain at least one letter and one number');
-        }
-      },
+      minlength: [15, 'Password must be more than 15 characters'],
     },
   },
   // USE SNAKE CASE METHOD

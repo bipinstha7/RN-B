@@ -4,5 +4,8 @@ export interface IUser {
 }
 
 export interface IUserModal extends IUser {
+  _id: string;
+  name: string;
+  email: string;
   password: string;
 }

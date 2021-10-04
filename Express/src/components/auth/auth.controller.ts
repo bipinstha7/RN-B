@@ -1,19 +1,20 @@
 import { Request, Response } from 'express';
 
-import { IRequestWithUser, IUserBody } from '@components/auth/auth.interface';
+import { IRequestWithUser, IUserBody, IUserName } from '@components/auth/auth.interface';
 import { IUser } from '@components/user/users.interface';
 import authService from './auth.service';
 
 export default {
   async signup(req: Request, res: Response): Promise<void> {
     const userData: IUserBody = req.body;
-    const user: IUser = await authService.signup(userData);
+    const user: IUserName = await authService.signup(userData);
 
     res.status(201).json({ data: user, message: 'signup' });
   },
 
   /* use rate limiter */
   async login(req: Request, res: Response): Promise<void> {
+    // USE TWO FACTOR AUTHENTICATION
     const userData: IUserBody = req.body;
     const user: IUser = await authService.login(userData);
 

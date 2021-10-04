@@ -15,6 +15,11 @@ export interface IRequestWithUser extends Request {
 }
 
 export interface IUserBody {
+  name: string;
   email: string;
   password: string;
+}
+
+export interface IUserName {
+  name: string;
 }
